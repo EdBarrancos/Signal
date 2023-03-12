@@ -1,24 +1,46 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Plants/Assets/plantProto.png" type="Texture" id=1]
+[ext_resource path="res://Plants/Assets/plant_sprites/plant.png" type="Texture" id=1]
 [ext_resource path="res://Plants/Scripts/Plant.gd" type="Script" id=2]
+[ext_resource path="res://Plants/Assets/plant_sprites/plant2.png" type="Texture" id=3]
+[ext_resource path="res://Plants/Assets/plant_sprites/plant3.png" type="Texture" id=4]
 
 [sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
 
-uniform float offset: hint_range(0, 1);
+shader_type canvas_item;
+render_mode blend_mix;
 
-void fragment(){
-	COLOR.rgb = vec3(offset, offset, offset);
-	COLOR.a = texture(TEXTURE, UV).a;
+// Wind settings.
+uniform vec2 wind = vec2(0, 0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+void vertex() {
+    vec4 pos = WORLD_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += wind.x * max(0.0, (1.0-UV.y) - heightOffset);
+	VERTEX.y += wind.y * max(0.0, (1.0-UV.y) - heightOffset);
 }"
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
 shader = SubResource( 3 )
-shader_param/offset = 0.0
+shader_param/wind = Vector2( 0, 0 )
+shader_param/heightOffset = 0.296
 
 [node name="Plant" type="Node2D"]
 script = ExtResource( 2 )
+plant_sprites = [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ]
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 2 )

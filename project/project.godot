@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "NoteSpawner",
+"language": "GDScript",
+"path": "res://Stages/Arena/Scripts/NoteSpawner.gd"
+} ]
+_global_script_class_icons={
+"NoteSpawner": ""
+}
+
 [application]
 
 config/name="Signal"
@@ -26,6 +36,13 @@ window/stretch/aspect="keep"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[importer_defaults]
+
+texture={
+"detect_3d": false,
+"flags/filter": false
+}
 
 [input]
 

@@ -21,6 +21,9 @@ onready var sound_finished = false
 onready var caught = false
 onready var dead = false
 
+signal died
+signal caught
+
 ########
 #EVENTS#
 ########
@@ -37,6 +40,7 @@ func _process(_delta):
 		
 func catch():
 	if dead == false:
+		emit_signal("caught")
 		caught = true
 		play_sound_caught()
 		animation_player.play("Caught")
@@ -54,6 +58,7 @@ func play_sound_dead():
 	die_sound_effect.play_sound()
 	
 func die():
+	emit_signal("died")
 	dead = true
 	animation_player.play("Dead")
 	play_sound_dead()

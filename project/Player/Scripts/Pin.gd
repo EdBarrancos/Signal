@@ -92,6 +92,8 @@ func apply_collisions():
 				pin.previous.close()
 			pin.close()
 		
+		parent.finish_fence_surrounding()
+		
 	if was_colliding:
 		self.close()
 

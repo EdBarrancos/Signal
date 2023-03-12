@@ -5,8 +5,9 @@ extends Node2D
 ############
 
 onready var camera = $Camera
-
 onready var notes_node = $Notes
+
+onready var game_states = $GameStates
 
 ###########
 #VARIABLES#
@@ -19,7 +20,7 @@ onready var active_fences = []
 ########
 
 func _ready():
-	pass
+	game_states.init()
 
 func init(_parent):
 	pass
