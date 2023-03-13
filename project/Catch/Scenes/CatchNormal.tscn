@@ -260,7 +260,7 @@ available_sounds = [ ExtResource( 7 ), ExtResource( 9 ), ExtResource( 6 ), ExtRe
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 20
 __meta__ = {
 "_edit_lock_": true
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/Assets/player.png" type="Texture" id=1]
 [ext_resource path="res://Player/Scripts/Movement.gd" type="Script" id=2]
@@ -10,6 +10,10 @@
 [ext_resource path="res://Player/Scripts/Chord.gd" type="Script" id=8]
 [ext_resource path="res://Player/Assets/Sound/bump3.wav" type="AudioStream" id=9]
 [ext_resource path="res://Player/Assets/Sound/bump2.wav" type="AudioStream" id=10]
+[ext_resource path="res://Player/Assets/Sound/boost3.wav" type="AudioStream" id=11]
+[ext_resource path="res://Player/Assets/Sound/boost2.wav" type="AudioStream" id=12]
+[ext_resource path="res://Player/Assets/Sound/boost1.wav" type="AudioStream" id=13]
+[ext_resource path="res://Player/Assets/dust.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -129,6 +133,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 3.0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("PlayerSprite:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ShadowSprite:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "boost_end"
@@ -147,7 +175,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1.7, 0.3 ), Vector2( 0.5, 2 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ShadowSprite:scale")
+tracks/1/path = NodePath("../CollisionShape:shape:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -156,10 +184,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.05 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"values": [ 2.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../CollisionShape:shape:height")
+tracks/2/path = NodePath("../CollisionShape:shape:radius")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -168,19 +196,31 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.05 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 2.0 ]
+"values": [ 3.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../CollisionShape:shape:radius")
+tracks/3/path = NodePath("PlayerSprite:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.05 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 3.0 ]
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShadowSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -200,19 +240,19 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.2, 2 ), Vector2( 1.6, 0.5 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ShadowSprite:scale")
+tracks/1/path = NodePath("../CollisionShape:shape:height")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, 0.5 ) ]
+"values": [ 2.0, 12.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../CollisionShape:shape:height")
+tracks/2/path = NodePath("../CollisionShape:shape:radius")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -221,10 +261,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 2.0, 12.0 ]
+"values": [ 3.0, 0.999978 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../CollisionShape:shape:radius")
+tracks/3/path = NodePath("PlayerSprite:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -233,7 +273,19 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 3.0, 0.999978 ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.784314 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("ShadowSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.203922 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -257,8 +309,31 @@ tracks/0/keys = {
 radius = 3.0
 height = 2.0
 
+[sub_resource type="Curve" id=8]
+_data = [ Vector2( 0.024024, 0.617788 ), 0.0, 0.0, 0, 0, Vector2( 0.207207, 0 ), -0.653726, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+lifetime_randomness = 0.07
+emission_shape = 1
+emission_sphere_radius = 1.5
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 90.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+initial_velocity_random = 0.4
+angular_velocity = 15.91
+angular_velocity_random = 0.17
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale_random = 0.6
+scale_curve = SubResource( 9 )
+
 [node name="Player" type="KinematicBody2D"]
-collision_layer = 2
+collision_layer = 18
 script = ExtResource( 4 )
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -322,6 +397,24 @@ script = ExtResource( 8 )
 
 [node name="SpawnPoint" type="Node2D" parent="Chord"]
 position = Vector2( -8, 0 )
+
+[node name="Boost_Sound" type="AudioStreamPlayer2D" parent="."]
+volume_db = -3.0
+bus = "PlayerSoundEffects"
+script = ExtResource( 7 )
+available_sounds = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ) ]
+
+[node name="BoostParticles" type="Particles2D" parent="."]
+position = Vector2( -3, 0 )
+emitting = false
+amount = 30
+lifetime = 2.0
+one_shot = true
+explosiveness = 0.7
+randomness = 0.3
+local_coords = false
+process_material = SubResource( 10 )
+texture = ExtResource( 14 )
 
 [connection signal="collision" from="Movement" to="." method="_on_Movement_collision"]
 [connection signal="timeout" from="Habilities/BoostTimer" to="." method="_on_BoostTimer_timeout"]
