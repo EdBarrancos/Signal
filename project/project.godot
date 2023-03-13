@@ -24,6 +24,10 @@ config/name="Signal"
 run/main_scene="res://Game/Scenes/Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+KeyBindings="*res://Game/Scripts/Key_Bindings.gd"
+
 [display]
 
 window/size/width=160
