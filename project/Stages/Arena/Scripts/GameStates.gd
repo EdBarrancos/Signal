@@ -4,7 +4,6 @@ export(int) var starting_state_index = 0
 onready var states = []
 
 var current_state
-var current_index
 
 func _ready():
 	for state in self.get_children():
@@ -13,24 +12,17 @@ func _ready():
 func init():
 	start_state(starting_state_index)
 
-#func _process(delta):
-#   pass
-
-func finish_state(state_index):
-	current_state.finish()
-
 func start_next_state(state_index):
-	finish_state(state_index)
-	current_state.connect("finished", self, "on_state_finished")
-	
-
-func on_state_finished():
-	if current_index + 1 >= len(states):
+	if state_index + 1 >= len(states):
 		print("No new state")
 		return
-	start_state(current_index + 1)
+	start_state(state_index + 1)
+	
+
+func finish_state(state_index):
+	print("finished")
+	start_next_state(state_index)
 
 func start_state(state_index):
 	current_state = states[state_index]
-	current_index = state_index
 	current_state.start()

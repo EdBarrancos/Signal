@@ -4,6 +4,8 @@ extends Node
 # Every time the player kills the enemy it spawns again
 # Move on when enemy captured
 
+export(int) var state_index = 0
+
 onready var manager = get_parent()
 
 onready var enemy_position = $Position2D;
@@ -11,8 +13,6 @@ onready var note_spawner = $"../../NoteSpawner";
 onready var tutorial = $Tutorial
 
 onready var murderer = false
-
-signal finished
 
 func _ready():
 	pass
@@ -22,9 +22,6 @@ func init(parent):
 
 func start():
 	spawn_note()
-
-func finish():
-	pass
 
 func spawn_note():
 	var note = note_spawner.spawn_note(enemy_position.position)
@@ -43,7 +40,7 @@ func on_note_killed():
 		murderer = false
 
 func on_note_caught():
-	emit_signal("finished")
+	manager.finish_state(state_index)
 	queue_free()
 	
 func _process(_delta):
