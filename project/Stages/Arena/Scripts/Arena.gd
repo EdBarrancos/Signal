@@ -4,7 +4,6 @@ extends Node2D
 #COMPONENTS#
 ############
 
-onready var camera = $Camera
 onready var notes_node = $Notes
 
 onready var game_states = $GameStates
@@ -46,10 +45,12 @@ func _physics_process(_delta):
 ##############
 
 func _on_Player_collision():
-	camera.increase_trauma(camera.TraumaIntensity.Minor)
+	game_states.get_camera().increase_trauma(
+		game_states.get_camera().TraumaIntensity.Minor)
 
 func _on_Player_spawn_pin():
-	camera.increase_trauma(camera.TraumaIntensity.Minor)
+	game_states.get_camera().increase_trauma(
+		game_states.get_camera().TraumaIntensity.Minor)
 
 func _on_Player_new_fence(fence):
 	active_fences.append(fence)

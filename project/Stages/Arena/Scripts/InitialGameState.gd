@@ -1,12 +1,8 @@
-extends Node
+extends GameState
 
 # In this state. One enemy + Player 
 # Every time the player kills the enemy it spawns again
 # Move on when enemy captured
-
-export(int) var state_index = 0
-
-onready var manager = get_parent()
 
 onready var enemy_position = $Position2D;
 onready var note_spawner = $"../../NoteSpawner";
@@ -41,6 +37,9 @@ func on_note_killed():
 
 func on_note_caught():
 	manager.finish_state(state_index)
+	queue_free()
+	
+func finish():
 	queue_free()
 	
 func _process(_delta):

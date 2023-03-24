@@ -10,11 +10,23 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "CameraTransition",
+"language": "GDScript",
+"path": "res://Stages/Scripts/CameraTransiction.gd"
+}, {
+"base": "Node",
+"class": "GameState",
+"language": "GDScript",
+"path": "res://Stages/Arena/Scripts/GameState.gd"
+}, {
+"base": "Node2D",
 "class": "NoteSpawner",
 "language": "GDScript",
 "path": "res://Stages/Arena/Scripts/NoteSpawner.gd"
 } ]
 _global_script_class_icons={
+"CameraTransition": "",
+"GameState": "",
 "NoteSpawner": ""
 }
 
@@ -32,8 +44,8 @@ KeyBindings="*res://Game/Scripts/Key_Bindings.gd"
 
 window/size/width=160
 window/size/height=144
-window/size/test_width=1280
-window/size/test_height=720
+window/size/test_width=1120
+window/size/test_height=1008
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 

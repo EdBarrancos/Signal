@@ -7,13 +7,16 @@
 position = Vector2( 61, 42 )
 script = ExtResource( 2 )
 speed = 0.05
-radius = 5
-separation_radius = 3.0
+radius = 15
+density = 0.5
+number_of_entities = 60
+separation_radius = 4.0
 max_rotation_angle_degree = 50
 
 [node name="Plants" type="Node2D" parent="."]
 
 [node name="CirclePatch" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
