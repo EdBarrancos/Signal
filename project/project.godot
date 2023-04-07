@@ -105,6 +105,11 @@ CHORD={
  ]
 }
 
+[layer_names]
+
+2d_render/layer_4="Catch"
+2d_physics/layer_4="Catch"
+
 [physics]
 
 common/enable_pause_aware_picking=true

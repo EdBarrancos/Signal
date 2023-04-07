@@ -5,7 +5,7 @@ extends GameState
 # Move on when enemy captured
 
 onready var enemy_position = $Position2D;
-onready var note_spawner = $"../../NoteSpawner";
+onready var note_spawner = $"../../Spawner";
 onready var tutorial = $Tutorial
 
 onready var murderer = false

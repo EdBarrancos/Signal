@@ -8,6 +8,7 @@ onready var plants = $Plants
 onready var circle = $CirclePatch
 onready var debug_line = $Line2D
 onready var tween = $Tween
+onready var circle_area = $Area2D/CollisionShape2D
 
 ###########
 #VARIABLES#
@@ -54,7 +55,9 @@ func _ready():
 	noise.period = 20.0
 	noise.persistence = 0.8
 	
-	resize_circle(radius * 2)
+	circle_area.shape.radius = radius * 1.5
+	
+	resize_circle(radius * 1.5)
 	
 	spawn_plants()
 	
@@ -152,3 +155,7 @@ func _on_Tween_tween_completed(object, key):
 		begin_scale_tween_animation()
 	elif key == ":rotation":
 		begin_rotation_tween_animation()
+
+
+func _on_Area2D_destroy():
+	queue_free()

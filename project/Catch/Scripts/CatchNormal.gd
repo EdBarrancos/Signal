@@ -44,6 +44,9 @@ func catch():
 		caught = true
 		play_sound_caught()
 		animation_player.play("Caught")
+		
+func set_target_pasture(target:Position2D):
+	pass
 	
 ##############
 #MISCELANIOUS#
