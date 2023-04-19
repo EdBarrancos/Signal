@@ -7,8 +7,12 @@ extends Node2D
 onready var sprite = $Sprite
 onready var rng = RandomNumberGenerator.new()
 
-export var plant_sprite_path = "res://Plants/Assets/plant_sprites/"
 export(Array, Texture) var plant_sprites = []
+
+onready var timer = $Timer
+export(float) var MAX_SECONDS_BEFORE_REGROWTH = 1
+
+onready var animation_player = $AnimationPlayer
 
 ###########
 #VARIABLES#
@@ -37,3 +41,13 @@ func set_wind(wind):
 ##############
 #MISCELANIOUS#
 ##############
+
+
+func _on_HitBox_body_entered(body):
+	animation_player.play("Dead")
+	timer.set_wait_time(rng.randf_range(0, MAX_SECONDS_BEFORE_REGROWTH))
+	timer.start()
+
+
+func _on_Timer_timeout():
+	animation_player.play("Grow")

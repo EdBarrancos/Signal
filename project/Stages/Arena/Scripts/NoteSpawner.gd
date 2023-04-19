@@ -2,6 +2,7 @@ extends Node2D
 class_name NoteSpawner
 
 onready var notes_container = $"../Notes" ;
+onready var grass_container = $"../GrassContainer";
 
 export(Resource) var note;
 export(Resource) var patch;
@@ -24,7 +25,7 @@ func spawn_note(note_position):
 
 func spawn_patch():
 	var new_path = patch.instance()
-	add_child(new_path)
+	grass_container.add_child(new_path)
 	new_path.position = random_position(new_path.radius)
 	return new_path
 	

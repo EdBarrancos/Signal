@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Plants/Assets/plant_sprites/plant.png" type="Texture" id=1]
+[ext_resource path="res://Plants/Assets/plant_sprites/sheets/plant2-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Plants/Scripts/Plant.gd" type="Script" id=2]
-[ext_resource path="res://Plants/Assets/plant_sprites/plant2.png" type="Texture" id=3]
-[ext_resource path="res://Plants/Assets/plant_sprites/plant3.png" type="Texture" id=4]
+[ext_resource path="res://Plants/Assets/plant_sprites/sheets/plant3-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://Plants/Assets/plant_sprites/sheets/plant1-Sheet.png" type="Texture" id=5]
 
 [sub_resource type="Shader" id=3]
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
@@ -38,10 +38,81 @@ shader = SubResource( 3 )
 shader_param/wind = Vector2( 0, 0 )
 shader_param/heightOffset = 0.296
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 1, 0.5 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Dead"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Grow"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3 ]
+}
+
 [node name="Plant" type="Node2D"]
 script = ExtResource( 2 )
-plant_sprites = [ ExtResource( 1 ), ExtResource( 3 ), ExtResource( 4 ) ]
+plant_sprites = [ ExtResource( 5 ), ExtResource( 1 ), ExtResource( 3 ) ]
 
 [node name="Sprite" type="Sprite" parent="."]
 material = SubResource( 2 )
-texture = ExtResource( 1 )
+texture = ExtResource( 5 )
+hframes = 4
+frame = 3
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2( 0, 1.5 )
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+anims/Dead = SubResource( 7 )
+anims/Grow = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_HitBox_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
