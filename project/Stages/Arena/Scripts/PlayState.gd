@@ -13,8 +13,19 @@ func init(parent):
 	pass
 
 func start():
-	spawner.spawn_patch()
-	spawner.spawn_note(temp_position.position)
+	spawner.spawn_patch().connect("eaten", self, "on_patch_eaten")
+	spawner.spawn_note_in_random_position()
+	spawner.spawn_note_in_random_position()
+	spawner.spawn_note_in_random_position()
+	spawner.spawn_note_in_random_position()
+	spawner.spawn_note_in_random_position()
+	spawner.spawn_note_in_random_position()
+	spawner.spawn_note_in_random_position()
+	spawner.spawn_note_in_random_position()
+	spawner.spawn_note_in_random_position()
+
+func on_patch_eaten():
+		spawner.spawn_patch().connect("eaten", self, "on_patch_eaten")
 
 func stop():
 	pass

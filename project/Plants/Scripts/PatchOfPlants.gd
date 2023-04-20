@@ -10,6 +10,8 @@ onready var debug_line = $Line2D
 onready var tween = $Tween
 onready var circle_area = $Area2D/CollisionShape2D
 
+signal eaten
+
 ###########
 #VARIABLES#
 ###########
@@ -158,4 +160,5 @@ func _on_Tween_tween_completed(object, key):
 
 
 func _on_Area2D_destroy():
+	emit_signal("eaten")
 	queue_free()

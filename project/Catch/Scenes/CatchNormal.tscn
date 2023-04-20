@@ -33,7 +33,7 @@ shader = SubResource( 2 )
 shader_param/shadow_color = Color( 0.14902, 0.0509804, 0.203922, 1 )
 
 [sub_resource type="CircleShape2D" id=9]
-radius = 63.561
+radius = 50.0
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 2, 2 )
@@ -304,6 +304,7 @@ script = ExtResource( 4 )
 available_sounds = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ) ]
 
 [connection signal="area_entered" from="Movement/ScanPatches" to="Movement" method="_on_ScanPatches_area_entered"]
+[connection signal="area_exited" from="Movement/ScanPatches" to="Movement" method="_on_ScanPatches_area_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

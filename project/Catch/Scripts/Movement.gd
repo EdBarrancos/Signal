@@ -1,10 +1,10 @@
 extends Node2D
 
-export(int) var velocity = 1
+export(float) var velocity = 0.5
 
 onready var catch = get_parent()
 
-var current_target : Vector2
+var current_target
 
 onready var sprites = $"../Sprites"
 
@@ -29,3 +29,8 @@ func _physics_process(delta):
 
 func _on_ScanPatches_area_entered(area):
 	current_target = area.global_position
+
+
+func _on_ScanPatches_area_exited(area):
+	if current_target == area.global_position:
+		current_target = null
