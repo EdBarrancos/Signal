@@ -246,7 +246,9 @@ __meta__ = {
 }
 
 [node name="Sprites" type="Node2D" parent="."]
+rotation = 0.785398
 script = ExtResource( 14 )
+offset_rotation = 45.0
 
 [node name="ShadowSprite" type="Sprite" parent="Sprites"]
 material = SubResource( 3 )

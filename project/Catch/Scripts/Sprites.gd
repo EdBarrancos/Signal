@@ -1,10 +1,12 @@
+tool
 extends Node2D
 
-func _ready():
-	pass
+export(float, -360, 360) var offset_rotation = 0 setget changeSlider_x
 
-func init(parent):
-	pass
+func changeSlider_x(changed_val):
+	offset_rotation=changed_val
+	self.rotation_degrees = changed_val
 
-#func _process(delta):
-#   pass
+func look_at(target: Vector2):
+	.look_at(target)
+	rotation_degrees += offset_rotation

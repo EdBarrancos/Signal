@@ -1,10 +1,12 @@
 extends Node2D
 
-export(int) var velocity = 5
+export(int) var velocity = 1
 
 onready var catch = get_parent()
 
 var current_target : Vector2
+
+onready var sprites = $"../Sprites"
 
 ## Description
 
@@ -20,6 +22,7 @@ func init(parent):
 
 func _physics_process(delta):
 	if (current_target):
+		sprites.look_at(current_target)
 		catch.move_and_collide(
 			(current_target - global_position) * velocity * delta)
 
