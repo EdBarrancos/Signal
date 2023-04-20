@@ -32,6 +32,22 @@ func init(parent):
 func _process(delta):
    pass
 
+func start():
+	set_left(true)
+	set_right(true)
+	set_pin(true)
+	set_boost(true)
+	set_kill_tip(false)
+	set_capture_tip(false)
+
+func hide():
+	set_left(false)
+	set_right(false)
+	set_pin(false)
+	set_boost(false)
+	set_kill_tip(false)
+	set_capture_tip(false)
+
 func set_left(new_value):
 	move_left.visible = new_value
 	

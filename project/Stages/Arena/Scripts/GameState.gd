@@ -11,6 +11,9 @@ onready var manager = get_parent()
 
 func start():
 	printerr("Unimplemented start in GameState")
+	
+func stop():
+	printerr("Unimplemented start in GameState")
 
 func finish():
 	printerr("Unimplemented finish in GameState")

@@ -7,6 +7,7 @@ extends GameState
 onready var enemy_position = $Position2D;
 onready var note_spawner = $"../../Spawner";
 onready var tutorial = $Tutorial
+onready var state_camera = $Camera
 
 onready var murderer = false
 
@@ -17,7 +18,16 @@ func init(parent):
 	pass
 
 func start():
+	set_process(true)
 	spawn_note()
+	tutorial.start()
+	state_camera.show()
+	state_camera.current = true
+
+func stop():
+	set_process(false)
+	tutorial.hide()
+	state_camera.hide()
 
 func spawn_note():
 	var note = note_spawner.spawn_note(enemy_position.position)
@@ -37,10 +47,10 @@ func on_note_killed():
 
 func on_note_caught():
 	manager.finish_state(state_index)
-	queue_free()
 	
 func finish():
-	queue_free()
+	set_process(false)
+	tutorial.hide()
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("LEFT"):

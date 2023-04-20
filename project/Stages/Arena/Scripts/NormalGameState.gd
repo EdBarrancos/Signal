@@ -16,6 +16,9 @@ func start():
 	
 	print("start")
 
+func stop():
+	pass
+
 func finish():
 	print("finish")
 
