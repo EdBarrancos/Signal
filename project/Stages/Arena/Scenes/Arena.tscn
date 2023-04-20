@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Player/Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Stages/Arena/Scripts/Camera.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Stages/Arena/Scripts/NormalGameState.gd" type="Script" id=10]
 [ext_resource path="res://Stages/Scenes/CameraTransiction.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Plants/Scenes/PatchOfPlants.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Stages/Arena/Scripts/PlayState.gd" type="Script" id=13]
 
 [sub_resource type="ConcavePolygonShape2D" id=1]
 segments = PoolVector2Array( -81, -73, 80, -73, 81, 73, -81, 73, 81, -73, 81, 73, -81, 73, -81, -73 )
@@ -326,7 +327,7 @@ position = Vector2( 30, 51 )
 
 [node name="GameStates" type="Node" parent="."]
 script = ExtResource( 5 )
-starting_state_index = 1
+starting_state_index = 2
 
 [node name="InitialGameState" type="Node" parent="GameStates"]
 script = ExtResource( 6 )
@@ -365,6 +366,26 @@ powerTraumaTo = 2
 default_current_camera = NodePath("../../InitialGameState/Camera")
 default_target_camera = NodePath("../Camera")
 default_ease_out = 1
+
+[node name="Position2D" type="Position2D" parent="GameStates/NormalGameState"]
+position = Vector2( 80, 72 )
+
+[node name="PlayState" type="Node" parent="GameStates"]
+script = ExtResource( 13 )
+state_index = 2
+camera_path = NodePath("Camera")
+
+[node name="Camera" type="Camera2D" parent="GameStates/PlayState"]
+position = Vector2( 80, 72 )
+rotating = true
+zoom = Vector2( 1.5, 1.5 )
+script = ExtResource( 2 )
+maxOffSet = 12
+maxAngle = 18
+powerTraumaTo = 2
+
+[node name="Position2D" type="Position2D" parent="GameStates/PlayState"]
+position = Vector2( 80, 72 )
 
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource( 7 )
