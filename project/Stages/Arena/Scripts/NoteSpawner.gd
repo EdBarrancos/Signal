@@ -35,6 +35,14 @@ func spawn_patch():
 	new_path.position = random_position(new_path.radius)
 	return new_path
 	
+func clean_notes():
+	for child in notes_container.get_children():
+		child.queue_free()
+	
+func clean_patch():
+	for child in grass_container.get_children():
+		child.queue_free()
+	
 func random_position(offset):
 	var x = rng.randi_range(-width/2 + offset/2, width/2 - offset/2)
 	var y = rng.randi_range(-height/2 + offset/2, height/2 - offset/2)

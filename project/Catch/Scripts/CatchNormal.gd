@@ -39,7 +39,7 @@ func _process(_delta):
 		self.queue_free()
 		
 func catch():
-	if dead == false:
+	if dead == false and caught == false:
 		emit_signal("caught")
 		caught = true
 		play_sound_caught()
@@ -58,10 +58,11 @@ func play_sound_dead():
 	die_sound_effect.play_sound()
 	
 func die():
-	emit_signal("died")
-	dead = true
-	animation_player.play("Dead")
-	play_sound_dead()
+	if caught == false and dead == false:
+		emit_signal("died")
+		dead = true
+		animation_player.play("Dead")
+		play_sound_dead()
 
 func _on_SoundTimer_timeout():
 	if caught == true:

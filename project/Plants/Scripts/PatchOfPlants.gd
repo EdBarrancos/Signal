@@ -57,7 +57,7 @@ func _ready():
 	noise.period = 20.0
 	noise.persistence = 0.8
 	
-	circle_area.shape.radius = radius * 1.5
+	circle_area.shape.radius = radius * 1
 	
 	resize_circle(radius * 1.5)
 	

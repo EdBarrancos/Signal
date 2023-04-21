@@ -18,7 +18,7 @@ func jump_start_state(state_index : int):
 
 func start_next_state(state_index):
 	if state_index + 1 >= len(states):
-		print("No new state")
+		start_state(0)
 		return
 	start_state(state_index + 1)
 	

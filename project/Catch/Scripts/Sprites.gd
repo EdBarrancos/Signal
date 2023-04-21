@@ -10,3 +10,6 @@ func changeSlider_x(changed_val):
 func look_at(target: Vector2):
 	.look_at(target)
 	rotation_degrees += offset_rotation
+
+func _ready():
+	rotation_degrees = 0
