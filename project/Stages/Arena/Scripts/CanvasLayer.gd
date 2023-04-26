@@ -15,11 +15,15 @@ func init(parent):
 
 func set_score(val):
 	score_points = val
-	score.text = "Score: " + str(score_points)
+	score.clear()
+	score.append_bbcode(
+		"[center]" +
+		"Score: " + str(score_points) +
+		"[/center]"
+	)
 	
 func add_score(val):
-	score_points += val
-	score.text = "Score: " + str(score_points)
+	set_score(score_points + val)
 	
 func reset_lives():
 	set_lives(MAX_LIVES)
@@ -29,4 +33,9 @@ func decrement_lives():
 	
 func set_lives(val):
 	lives = val
-	lives_label.text = "Lives: " + str(lives)
+	lives_label.clear()
+	lives_label.append_bbcode(
+		"[center]" +
+		"Lives: " + str(lives) +
+		"[/center]"
+	)

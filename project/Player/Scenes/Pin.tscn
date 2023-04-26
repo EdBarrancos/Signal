@@ -12,7 +12,7 @@
 b = Vector2( 0, 0 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3, 3 )
+extents = Vector2( 2, 2 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -64,14 +64,14 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 3.63636, 3.63636 )
+extents = Vector2( 2.72727, 2.72727 )
 
 [node name="Pin" type="StaticBody2D"]
 collision_mask = 0
 script = ExtResource( 2 )
 
 [node name="VisualFence" type="Line2D" parent="."]
-width = 2.0
+width = 1.0
 default_color = Color( 0.529412, 0.156863, 0.415686, 1 )
 
 [node name="FenceArea" type="Area2D" parent="VisualFence"]

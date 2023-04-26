@@ -22,7 +22,7 @@ func _ready():
 	boost_tutorial.clear()
 	boost_tutorial.append_bbcode(
 		"[center]" +
-		"[" + KeyBindings.get_key_binding_boost() + "]" +
+		"[" + KeyBindings.get_key_binding_boost() + "] " +
 		boost_tutorial_label +
 		"[/center]")
 
