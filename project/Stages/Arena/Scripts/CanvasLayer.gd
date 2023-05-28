@@ -10,7 +10,7 @@ onready var lives_label = $LivesLabel
 func _ready():
 	pass
 
-func init(parent):
+func init(_parent):
 	pass
 
 func set_score(val):

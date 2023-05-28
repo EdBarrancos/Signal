@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Stages/Arena/Scenes/Arena.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Game/Scripts/GameManager.gd" type="Script" id=2]
+[ext_resource path="res://Stages/EndScreen/Scenes/EndScreen.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+arena_scene = ExtResource( 1 )
+end_scene = ExtResource( 3 )
+initial_scene = 1
 
 [node name="Arena" parent="." instance=ExtResource( 1 )]

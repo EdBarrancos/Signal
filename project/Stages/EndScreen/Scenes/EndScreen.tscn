@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fonts/GrapeSoda.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Stages/EndScreen/Scripts/EndScreen.gd" type="Script" id=2]
+[ext_resource path="res://Stages/Scenes/Background.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ActualScoreLabel:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -15.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Score"
+length = 1.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ActualScoreLabel:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.75, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -15.0, 15.0, -15.0 ]
+}
+
+[node name="EndScreen" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" parent="." instance=ExtResource( 3 )]
+
+[node name="HighScoreLabel" type="Node2D" parent="."]
+position = Vector2( 80, 52 )
+scale = Vector2( 1.5, 1.5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HighScoreLabel"]
+margin_left = -23.3333
+margin_top = -9.33333
+margin_right = 22.6667
+margin_bottom = 8.66667
+rect_pivot_offset = Vector2( 23.3333, 9.33333 )
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center][wave amp=40.0 freq=4.0]Score[/wave][/center]"
+text = "Score"
+fit_content_height = true
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Score"
+anims/RESET = SubResource( 2 )
+anims/Score = SubResource( 3 )
+
+[node name="ActualScoreLabel" type="Node2D" parent="."]
+position = Vector2( 80, 88 )
+rotation = -0.261799
+scale = Vector2( 3, 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ActualScoreLabel"]
+margin_left = -27.0
+margin_top = -9.0
+margin_right = 27.0
+margin_bottom = 8.0
+rect_pivot_offset = Vector2( 27, 9 )
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]120[/center]"
+text = "120"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

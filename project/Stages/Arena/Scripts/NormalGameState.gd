@@ -16,7 +16,7 @@ func init(parent):
 	pass
 
 func start():
-	camera_transition.init_transition(4)
+	camera_transition.init_transition(2)
 
 func stop():
 	score_lives_label.hide()

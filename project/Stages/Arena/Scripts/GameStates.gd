@@ -1,14 +1,17 @@
 extends Node
 
+signal all_states_finished
+
 export(int) var starting_state_index = 0
-onready var states = []
+export(Array, NodePath) var states_paths
+var states
 
 var current_state : GameState
 
 func _ready():
-	for state in self.get_children():
-		states.append(state)
-		state.stop()
+	states = []
+	for state_path in states_paths:
+		states.push_back(get_node(state_path))
 
 func init():
 	jump_start_state(starting_state_index)
@@ -18,6 +21,7 @@ func jump_start_state(state_index : int):
 
 func start_next_state(state_index):
 	if state_index + 1 >= len(states):
+		emit_signal("all_states_finished")
 		start_state(0)
 		return
 	start_state(state_index + 1)

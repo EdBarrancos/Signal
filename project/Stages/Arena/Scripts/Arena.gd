@@ -5,8 +5,10 @@ extends Node2D
 ############
 
 onready var notes_node = $Notes
-
 onready var game_states = $GameStates
+
+# Ugly, get an actual score manager
+onready var score_manager = $GameStates/NormalGameState/CanvasLayer
 
 ###########
 #VARIABLES#
@@ -54,3 +56,7 @@ func _on_Player_spawn_pin():
 
 func _on_Player_new_fence(fence):
 	active_fences.append(fence)
+
+
+func _on_GameStates_all_states_finished():
+	get_parent().set_ending_scene(score_manager.score_points)
