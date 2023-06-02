@@ -16,7 +16,8 @@ func init(_parent, new_score_value):
 
 func _input(event):
 	if event is InputEventKey:
-		skip()
+		#skip()
+		pass
 		
 func skip():
 	if can_skip:

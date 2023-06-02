@@ -1,66 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
-[sub_resource type="Shader" id=5]
-code = "shader_type canvas_item;
+[ext_resource path="res://Stages/Scripts/Background.gd" type="Script" id=1]
+[ext_resource path="res://Game/Assets/background.png" type="Texture" id=2]
+[ext_resource path="res://Stages/EndScreen/Scenes/BackgroundInstance.tscn" type="PackedScene" id=3]
 
-uniform vec4 first_color : hint_color;
-uniform vec4 second_color : hint_color;
-
-uniform float angle = 1.57079632679;
-uniform float angle_tmp = 0;
-uniform float tmp = 0;
-
-const float PI = 3.14159265358979323846;
-
-
-void fragment() {
-	vec2 line_1 = vec2(cos(angle), sin(angle));
-	vec2 line_2 = vec2(cos(angle + PI/2.0), sin(angle + PI/2.0));
-
-	if (UV.x * line_1.x + ((line_1.y - line_1.x)/2.0) <= UV.y * line_1.y &&
-		UV.x * line_2.x + ((line_2.y - line_2.x)/2.0) <= UV.y * line_2.y) {
-		COLOR = first_color;
-	} else if (UV.x * line_1.x + ((line_1.y - line_1.x)/2.0) > UV.y * line_1.y &&
-		UV.x * line_2.x + ((line_2.y - line_2.x)/2.0) > UV.y * line_2.y) {
-		COLOR = first_color;
-	} else if (UV.x * line_1.x + ((line_1.y - line_1.x)/2.0) <= UV.y * line_1.y &&
-		UV.x * line_2.x + ((line_2.y - line_2.x)/2.0) > UV.y * line_2.y) {
-		COLOR = second_color;
-	} else if (UV.x * line_1.x + ((line_1.y - line_1.x)/2.0) > UV.y * line_1.y &&
-		UV.x * line_2.x + ((line_2.y - line_2.x)/2.0) <= UV.y * line_2.y) {
-		COLOR = second_color;
-	}
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 5 )
-shader_param/first_color = Color( 0.741176, 0.215686, 0.215686, 0 )
-shader_param/second_color = Color( 0.14902, 0.0509804, 0.203922, 1 )
-shader_param/angle = 1.5708
-shader_param/angle_tmp = 3.039
-shader_param/tmp = 0.646
-
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=1]
 resource_name = "Move"
-length = 3.0
+length = 18.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/angle")
+tracks/0/path = NodePath(".:angle")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 2, 2.5, 5, 6, 8, 9.5, 9.8, 11, 12, 14, 16.5, 18 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 1.5708, -4.715 ]
+"values": [ 0.0, 180.0, 150.0, 360.0, 270.0, 360.0, 180.0, 200.0, 0.0, 90.0, -90.0, 45.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/angle")
+tracks/0/path = NodePath(".:angle")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -69,17 +33,48 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1.5708 ]
+"values": [ 0.0 ]
 }
 
-[node name="Background" type="ColorRect"]
-material = SubResource( 6 )
-margin_right = 160.0
-margin_bottom = 144.0
-color = Color( 0.364706, 0.054902, 0.054902, 0 )
+[sub_resource type="Animation" id=3]
+resource_name = "Testing Shit"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:angle")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 125.0, 75.0, 90.0, 45.0, 90.0 ]
+}
+
+[node name="Background" type="Node2D"]
+script = ExtResource( 1 )
+texture = ExtResource( 2 )
+max_size = Vector2( 7, 7 )
+min_size = Vector2( 0.2, 0.2 )
+number_of_instances = 200.0
+delay = 0.05
+actual_delay = 0.01
+storage_inst = NodePath("BackgroundInstances")
+center = NodePath("CenterPosition")
+background_inst = ExtResource( 3 )
+populate = true
+clear = true
+
+[node name="BackgroundInstances" type="Node2D" parent="."]
+
+[node name="CenterPosition" type="Position2D" parent="."]
+position = Vector2( 80, 72 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Move"
-playback_speed = 0.5
-anims/Move = SubResource( 7 )
-anims/RESET = SubResource( 8 )
+autoplay = "Testing Shit"
+playback_speed = 0.7
+anims/Move = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+"anims/Testing Shit" = SubResource( 3 )

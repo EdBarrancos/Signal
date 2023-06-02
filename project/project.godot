@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "BackgroundInstance",
+"language": "GDScript",
+"path": "res://Stages/EndScreen/Scripts/BackgroundInstance.gd"
+}, {
+"base": "Node2D",
 "class": "CameraTransition",
 "language": "GDScript",
 "path": "res://Stages/Scripts/CameraTransiction.gd"
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://Stages/Arena/Scripts/NoteSpawner.gd"
 } ]
 _global_script_class_icons={
+"BackgroundInstance": "",
 "CameraTransition": "",
 "GameState": "",
 "NoteSpawner": ""
@@ -46,7 +52,7 @@ window/size/width=160
 window/size/height=144
 window/size/test_width=1120
 window/size/test_height=1008
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [global]
