@@ -12,6 +12,10 @@ onready var current_scene = $Arena
 func _ready():
 	update_scene(initial_scene)
 	
+func _input(event):
+	if event.is_action_pressed("GO_TO_ENDSCREEN"):
+		update_scene(Scenes.End)
+	
 func set_arena_scene():
 	update_scene(Scenes.Arena)
 	

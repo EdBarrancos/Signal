@@ -10,6 +10,9 @@ onready var rng = RandomNumberGenerator.new()
 var linked_instance
 var previous_instance
 
+var total_number_of_instances
+var id
+
 func _ready():
 	rng.randomize()
 
@@ -33,7 +36,15 @@ func set_scale(new_scale):
 	scale = new_scale
 	return self
 	
-func set_angle(
+func set_total_number_of_instances(new_total):
+	total_number_of_instances = new_total
+	return self
+
+func set_instance_id(new_id):
+	id = new_id
+	return self
+	
+func rotate_background_piece(
 	new_angle, 
 	delay, 
 	damp, 
@@ -41,18 +52,18 @@ func set_angle(
 	actual_delay,
 	actual_delay_increase):
 		
-	if actual_delay > 0:
-		yield(get_tree().create_timer(actual_delay), "timeout")
-	
-	animate_angle(new_angle, delay)
+	if actual_delay * (1 / total_number_of_instances) > 0:
+		yield(get_tree().create_timer(actual_delay * (1 / total_number_of_instances)), "timeout")
+
+	animate_angle(new_angle, delay * (1 / total_number_of_instances))
 		
 	if linked_instance:
-		linked_instance.set_angle(
-			(1 - damp_angle) * new_angle, 
-			delay + damp, 
+		linked_instance.rotate_background_piece(
+			new_angle, 
+			delay + damp * (1 / total_number_of_instances), 
 			damp,
 			damp_angle,
-			actual_delay + actual_delay_increase,
+			actual_delay + actual_delay_increase * (1 / total_number_of_instances),
 			actual_delay_increase)
 			
 	return self
@@ -64,6 +75,6 @@ func animate_angle(target_angle, delay):
 		null,
 		target_angle,
 		delay,
-		Tween.TRANS_BACK,
-		Tween.EASE_IN_OUT)
+		Tween.TRANS_SINE,
+		Tween.EASE_OUT)
 	tween.start()

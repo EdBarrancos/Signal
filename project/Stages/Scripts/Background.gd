@@ -25,7 +25,7 @@ var last_spawned_instance = null
 func set_angle(new_angle):
 	angle = new_angle
 	if check_sets() and last_spawned_instance:
-		last_spawned_instance.set_angle(
+		last_spawned_instance.rotate_background_piece(
 			angle, 
 			delay, 
 			damp_time, 
@@ -69,7 +69,12 @@ func populate_background():
 	var last_instance = null
 	var tmp_instance = null
 	for i in range(number_of_instances) :
-		tmp_instance = create_instance_background(texture, target_size, last_instance)
+		tmp_instance = create_instance_background(
+			texture, 
+			target_size, 
+			last_instance, 
+			number_of_instances - i)
+			
 		if last_instance:
 			last_instance.set_previous_instance(tmp_instance)
 		last_instance = tmp_instance
@@ -77,7 +82,7 @@ func populate_background():
 		target_size = update_size(target_size, step_size)
 	last_spawned_instance = last_instance
 	
-func create_instance_background(target_texture, size, last_instance):
+func create_instance_background(target_texture, size, last_instance, i):
 	var new_instance = background_inst.instance()
 	var parent_target = self.get_node(storage_inst)
 	
@@ -90,7 +95,9 @@ func create_instance_background(target_texture, size, last_instance):
 		.set_texture(target_texture) \
 		.set_position(self.get_node(center).position) \
 		.set_scale(size) \
-		.set_linked_instance(last_instance)
+		.set_linked_instance(last_instance) \
+		.set_total_number_of_instances(number_of_instances) \
+		.set_instance_id(i)
 		
 	return new_instance
 	

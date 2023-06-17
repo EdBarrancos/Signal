@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Stages/Scripts/Background.gd" type="Script" id=1]
 [ext_resource path="res://Game/Assets/background.png" type="Texture" id=2]
 [ext_resource path="res://Stages/EndScreen/Scenes/BackgroundInstance.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Stages/EndScreen/Scripts/BackgroundInstance.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Move"
@@ -35,10 +36,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:actual_delay")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.045 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Testing Shit"
-length = 5.0
+length = 15.0
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:angle")
@@ -47,33 +60,532 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 2.5, 3, 3.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 3.2, 7.7, 9.6, 11.6, 14, 15.1, 16.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 125.0, 75.0, 90.0, 45.0, 90.0 ]
+"values": [ 0.0, 50.0, 5.0, -35.0, -45.0, 20.0, 0.0, 0.0 ]
 }
 
 [node name="Background" type="Node2D"]
 script = ExtResource( 1 )
 texture = ExtResource( 2 )
-max_size = Vector2( 7, 7 )
+max_size = Vector2( 6, 6 )
 min_size = Vector2( 0.2, 0.2 )
-number_of_instances = 200.0
-delay = 0.05
-actual_delay = 0.01
+number_of_instances = 100.0
+delay = 20.0
+actual_delay = 0.045
 storage_inst = NodePath("BackgroundInstances")
 center = NodePath("CenterPosition")
 background_inst = ExtResource( 3 )
 populate = true
-clear = true
 
 [node name="BackgroundInstances" type="Node2D" parent="."]
+
+[node name="BackgroundInstancebck" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 6, 6 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck2" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.942, 5.942 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck3" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.884, 5.884 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck4" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.826, 5.826 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck5" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.768, 5.768 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck6" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.71, 5.71 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck7" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.652, 5.652 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck8" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.594, 5.594 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck9" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.536, 5.536 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck10" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.478, 5.478 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck11" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.42, 5.42 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck12" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.362, 5.362 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck13" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.304, 5.304 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck14" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.246, 5.246 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck15" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.188, 5.188 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck16" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.13, 5.13 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck17" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.072, 5.072 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck18" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 5.014, 5.014 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck19" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.956, 4.956 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck20" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.898, 4.898 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck21" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.84, 4.84 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck22" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.782, 4.782 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck23" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.724, 4.724 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck24" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.666, 4.666 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck25" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.608, 4.608 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck26" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.55, 4.55 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck27" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.492, 4.492 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck28" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.434, 4.434 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck29" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.376, 4.376 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck30" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.318, 4.318 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck31" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.26, 4.26 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck32" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.202, 4.202 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck33" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.144, 4.144 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck34" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.086, 4.086 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck35" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 4.028, 4.028 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck36" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.97, 3.97 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck37" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.912, 3.912 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck38" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.854, 3.854 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck39" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.796, 3.796 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck40" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.738, 3.738 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck41" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.68, 3.68 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck42" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.622, 3.622 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck43" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.564, 3.564 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck44" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.506, 3.506 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck45" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.448, 3.448 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck46" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.39, 3.39 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck47" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.332, 3.332 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck48" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.274, 3.274 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck49" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.216, 3.216 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck50" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.158, 3.158 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck51" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.1, 3.1 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck52" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 3.042, 3.042 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck53" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.984, 2.984 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck54" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.926, 2.926 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck55" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.868, 2.868 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck56" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.81, 2.81 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck57" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.752, 2.752 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck58" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.69399, 2.69399 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck59" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.63599, 2.63599 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck60" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.57799, 2.57799 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck61" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.51999, 2.51999 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck62" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.46199, 2.46199 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck63" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.40399, 2.40399 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck64" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.34599, 2.34599 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck65" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.28799, 2.28799 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck66" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.22999, 2.22999 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck67" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.17199, 2.17199 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck68" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.11399, 2.11399 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck69" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 2.05599, 2.05599 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck70" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.99799, 1.99799 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck71" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.93999, 1.93999 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck72" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.88199, 1.88199 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck73" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.82399, 1.82399 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck74" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.76599, 1.76599 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck75" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.70799, 1.70799 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck76" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.64999, 1.64999 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck77" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.59199, 1.59199 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck78" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.53399, 1.53399 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck79" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.47599, 1.47599 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck80" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.41799, 1.41799 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck81" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.35999, 1.35999 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck82" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.30199, 1.30199 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck83" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.24399, 1.24399 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck84" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.18599, 1.18599 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck85" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.12799, 1.12799 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck86" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.06999, 1.06999 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck87" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 1.01199, 1.01199 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck88" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.953995, 0.953995 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck89" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.895995, 0.895995 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck90" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.837995, 0.837995 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck91" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.779994, 0.779994 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck92" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.721994, 0.721994 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck93" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.663994, 0.663994 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck94" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.605994, 0.605994 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck95" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.547994, 0.547994 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck96" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.489994, 0.489994 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck97" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.431994, 0.431994 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck98" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.373994, 0.373994 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck99" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.315994, 0.315994 )
+script = ExtResource( 4 )
+
+[node name="BackgroundInstancebck100" type="Node2D" parent="BackgroundInstances" instance=ExtResource( 3 )]
+position = Vector2( 80, 72 )
+scale = Vector2( 0.257994, 0.257994 )
+script = ExtResource( 4 )
 
 [node name="CenterPosition" type="Position2D" parent="."]
 position = Vector2( 80, 72 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Testing Shit"
+autoplay = "Move"
 playback_speed = 0.7
 anims/Move = SubResource( 1 )
 anims/RESET = SubResource( 2 )
