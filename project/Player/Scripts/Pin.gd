@@ -11,6 +11,7 @@ onready var fence = $VisualFence
 onready var fence_collision = $VisualFence/FenceArea/FenceCollision
 onready var fence_area = $VisualFence/FenceArea
 onready var spawn_sound = $SpawnSound
+onready var sparks_particles = $Sparks 
 
 var parent
 
@@ -34,6 +35,7 @@ onready var is_temp = false
 
 func _ready():
 	spawn_sound.play_sound()
+	sparks_particles.emitting = true
 
 func init(parent_tobe, pos):
 	self.global_position = pos
