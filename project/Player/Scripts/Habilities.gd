@@ -26,7 +26,6 @@ func activate_boost():
 		boostTimer.one_shot = true
 		boostTimer.start()
 	
-		movement_handler.set_turning(false)
 		movement_handler.boost(boost_speed)
 		
 		player_animation.play("boost_init")
@@ -40,7 +39,6 @@ func activate_boost():
 ##############
 
 func _on_BoostTimer_timeout():
-	movement_handler.set_turning(true)
 	player_animation.play("boost_end")
 	movement_handler.stop_boost(boost_speed)
 	get_parent().set_collision_layer_bit(4, true)
