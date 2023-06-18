@@ -42,7 +42,7 @@ func _ready():
 		properties_to_transition.append(
 			create_property_transition(property, Tween.TRANS_CUBIC, Tween.EASE_IN_OUT))
 
-func init(parent):
+func init(_parent):
 	pass
 	
 func set_current_camera(new_current_camera: Camera2D):

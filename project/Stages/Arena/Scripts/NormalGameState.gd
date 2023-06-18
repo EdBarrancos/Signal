@@ -12,7 +12,7 @@ export(int) var number_of_notes = 10;
 func _ready():
 	pass
 
-func init(parent):
+func init(_parent):
 	pass
 
 func start():

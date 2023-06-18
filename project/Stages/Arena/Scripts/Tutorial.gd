@@ -26,10 +26,10 @@ func _ready():
 		boost_tutorial_label +
 		"[/center]")
 
-func init(parent):
+func init(_parent):
 	pass
 
-func _process(delta):
+func _process(_delta):
    pass
 
 func start():

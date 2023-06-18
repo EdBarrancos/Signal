@@ -17,7 +17,7 @@ onready var sprites = $"../Sprites"
 func _ready():
 	pass
 
-func init(parent):
+func init(_parent):
 	pass
 
 func _physics_process(delta):

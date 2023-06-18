@@ -10,7 +10,7 @@ onready var rng = RandomNumberGenerator.new()
 export(Array, Texture) var plant_sprites = []
 
 onready var timer = $Timer
-export(float) var MAX_SECONDS_BEFORE_REGROWTH = 1
+export(float) var MAX_SECONDS_BEFORE_REGROWTH = 1.0
 
 onready var animation_player = $AnimationPlayer
 
@@ -29,7 +29,7 @@ func _ready():
 	var sprite_to_be = plant_sprites[rng.randi_range(0, len(plant_sprites) - 1)]
 	sprite.texture = sprite_to_be
 
-func init(parent):
+func init(_parent):
 	pass
 
 #func _process(delta):
@@ -43,7 +43,7 @@ func set_wind(wind):
 ##############
 
 
-func _on_HitBox_body_entered(body):
+func _on_HitBox_body_entered(_body):
 	animation_player.play("Dead")
 	timer.set_wait_time(rng.randf_range(0, MAX_SECONDS_BEFORE_REGROWTH))
 	timer.start()

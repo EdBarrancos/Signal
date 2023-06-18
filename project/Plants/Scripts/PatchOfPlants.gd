@@ -21,7 +21,7 @@ var noise = OpenSimplexNoise.new()
 
 onready var offset = 0
 export(float) var speed = 0.01
-export(int) var scale_noise = 0.01
+export(float) var scale_noise = 0.01
 
 export(int) var frame_skip = 5
 onready var frame_counter = 0
@@ -35,10 +35,10 @@ export(float) var separation_radius = 0.5
 var max_circle_scale
 var min_circle_scale
 
-export(float) var time_scale_tween_rotation = 1
-export(float) var time_scale_tween_scale = 2
+export(float) var time_scale_tween_rotation = 1.0
+export(float) var time_scale_tween_scale = 2.0
 export(float) var max_scale_multiplier = 1.5
-export(float) var min_scale_multiplier = 1
+export(float) var min_scale_multiplier = 1.0
 
 
 export(int) var max_rotation_angle_degree = 70
@@ -66,10 +66,10 @@ func _ready():
 	begin_rotation_tween_animation()
 	begin_scale_tween_animation()
 
-func init(parent):
-	pass	
+func init(_parent):
+	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if frame_counter == frame_skip:
 		offset += speed
 		for plant in plants.get_children():
@@ -87,7 +87,7 @@ func _physics_process(delta):
 	
 func spawn_plants():
 	var spawned_positions = []
-	for i in range(number_of_entities):
+	for _i in range(number_of_entities):
 		var new_plant = plant_scene_path.instance()
 		var new_position = get_spawn_position(radius)
 		while is_in_range(spawned_positions, new_position, separation_radius):
@@ -103,10 +103,10 @@ func is_in_range(previous, target, distance):
 			return true
 	return false
 
-func get_spawn_position(radius):
+func get_spawn_position(radius_modifier):
 	rng.randomize()
 	return Vector2(1,1).rotated(rng.randi_range(0, 360)) \
-			* (rng.randf_range(0, 1) * radius)
+			* (rng.randf_range(0, 1) * radius_modifier)
 
 func resize_circle(target_size):
 	debug_line.clear_points()
@@ -152,7 +152,7 @@ func begin_scale_tween_animation():
 	tween.start()
 
 
-func _on_Tween_tween_completed(object, key):
+func _on_Tween_tween_completed(_object, key):
 	if key == ":scale":
 		begin_scale_tween_animation()
 	elif key == ":rotation":

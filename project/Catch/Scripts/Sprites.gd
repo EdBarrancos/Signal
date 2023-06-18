@@ -1,7 +1,7 @@
 tool
 extends Node2D
 
-export(float, -360, 360) var offset_rotation = 0 setget changeSlider_x
+export(float, -360.0, 360.0) var offset_rotation = 0.0 setget changeSlider_x
 
 func changeSlider_x(changed_val):
 	offset_rotation=changed_val

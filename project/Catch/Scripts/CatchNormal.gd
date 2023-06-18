@@ -81,11 +81,11 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_CaughtSound_finished():
 	sound_finished = true
 
-func _on_HurtBox_area_entered(area):
+func _on_HurtBox_area_entered(_area):
 	if caught == false:
 		die()
 
-func _on_HurtBox_body_entered(body):
+func _on_HurtBox_body_entered(_body):
 	if caught == false:
 		die()
 

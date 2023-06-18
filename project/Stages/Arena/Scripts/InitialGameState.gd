@@ -14,7 +14,7 @@ onready var murderer = false
 func _ready():
 	pass
 
-func init(parent):
+func init(_parent):
 	pass
 
 func start():
