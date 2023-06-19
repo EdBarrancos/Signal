@@ -9,7 +9,6 @@
 script = ExtResource( 2 )
 arena_scene = ExtResource( 1 )
 end_scene = ExtResource( 3 )
-initial_scene = 1
 
 [node name="Arena" parent="." instance=ExtResource( 1 )]
 

@@ -401,6 +401,8 @@ bbcode_enabled = true
 bbcode_text = "[center]Lives: 10[/center]"
 text = "Lives: 10"
 
+[node name="SpawnInterval" type="Timer" parent="GameStates/NormalGameState"]
+
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource( 7 )
 note = ExtResource( 4 )
@@ -417,3 +419,4 @@ position = Vector2( 80, 72 )
 [connection signal="spawn_pin" from="Player" to="." method="_on_Player_spawn_pin"]
 [connection signal="all_states_finished" from="GameStates" to="." method="_on_GameStates_all_states_finished"]
 [connection signal="finished" from="GameStates/NormalGameState/CameraTransiction" to="GameStates/NormalGameState" method="_on_CameraTransiction_finished"]
+[connection signal="timeout" from="GameStates/NormalGameState/SpawnInterval" to="GameStates/NormalGameState" method="_on_SpawnInterval_timeout"]
