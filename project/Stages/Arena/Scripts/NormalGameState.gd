@@ -12,7 +12,7 @@ onready var spawn_interval_timer = $SpawnInterval
 export(int) var max_number_of_notes = 15;
 export(int) var starting_number_of_notes = 3;
 export(float) var spawning_interval = 5.0;
-export(float) var interval_increase = 0.5;
+export(float) var interval_increase = 0.8;
 var current_notes
 
 func _ready():

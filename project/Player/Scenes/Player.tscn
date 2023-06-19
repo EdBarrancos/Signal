@@ -297,7 +297,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.784314 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.627451 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("ShadowSprite:modulate")
