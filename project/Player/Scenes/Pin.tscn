@@ -95,6 +95,7 @@ scale_random = 0.48
 scale_curve = SubResource( 8 )
 
 [node name="Pin" type="StaticBody2D"]
+collision_layer = 32
 collision_mask = 0
 script = ExtResource( 2 )
 
