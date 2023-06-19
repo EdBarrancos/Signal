@@ -19,13 +19,13 @@ func _ready():
 
 func spawn_note(note_position):
 	var new_note = note.instance()
-	notes_container.add_child(new_note)
+	notes_container.call_deferred("add_child", new_note)
 	new_note.position = note_position
 	return new_note
 
 func spawn_note_in_random_position():
 	var new_note = note.instance()
-	notes_container.add_child(new_note)
+	notes_container.call_deferred("add_child", new_note)
 	new_note.position = random_position(5)
 	return new_note
 
