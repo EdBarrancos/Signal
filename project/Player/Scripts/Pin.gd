@@ -180,8 +180,6 @@ func _on_FenceCollision_area_entered(area):
 		colliding_with.append(area.get_pin())
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "death":
+	if is_closed:
 		finish_close()
 		
-func delete():
-	pass
