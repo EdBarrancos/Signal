@@ -182,3 +182,6 @@ func _on_FenceCollision_area_entered(area):
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "death":
 		finish_close()
+		
+func delete():
+	pass

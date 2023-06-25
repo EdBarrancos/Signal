@@ -47,6 +47,10 @@ func spawn_point():
 
 func remove_pin(pin):
 	current_pins.erase(pin)
+
+func remove_all_pins():
+	while(!current_pins.empty()):
+		current_pins.pop_front().close()
 	
 func init_fence_surrounding():
 	fence.clear()

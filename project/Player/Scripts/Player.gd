@@ -26,6 +26,9 @@ func _input(event):
 	if event.is_action_pressed("CHORD"):
 		chord.spawn_point()
 		emit_signal("spawn_pin")
+	
+	if event.is_action_pressed("CLEAR CHORDS"):
+		chord.remove_all_pins()
 
 func _on_Movement_collision():
 	if player_state == PlayerStates.Idle:
