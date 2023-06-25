@@ -431,6 +431,7 @@ available_sounds = [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 9 ) ]
 
 [node name="Chord" type="Node2D" parent="."]
 script = ExtResource( 8 )
+MAX_PINS = 9
 
 [node name="SpawnPoint" type="Node2D" parent="Chord"]
 position = Vector2( -8, 0 )

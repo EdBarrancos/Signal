@@ -9,6 +9,8 @@ onready var die_sound_effect = $DeadSound
 onready var sound_timer = $SoundTimer
 onready var animation_player = $AnimationPlayer
 
+var blood = load("res://Catch/Scenes/Blood.tscn")
+
 ###########
 #VARIABLES#
 ###########
@@ -44,6 +46,12 @@ func catch():
 		caught = true
 		play_sound_caught()
 		animation_player.play("Caught")
+
+func blood_splatter():
+	var blood_instance = blood.instance()
+	# /Node-Container/Arena/Global
+	get_parent().get_parent().get_parent().get_blood_splatter_container().add_child(blood_instance)
+	blood_instance.global_position = self.global_position
 	
 ##############
 #MISCELANIOUS#
@@ -63,6 +71,7 @@ func die():
 		dead = true
 		animation_player.play("Dead")
 		play_sound_dead()
+		blood_splatter()
 
 func _on_SoundTimer_timeout():
 	if caught == true:

@@ -13,3 +13,5 @@ end_scene = ExtResource( 3 )
 [node name="Arena" parent="." instance=ExtResource( 1 )]
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
+
+[node name="BloodSplatters" type="Node2D" parent="."]

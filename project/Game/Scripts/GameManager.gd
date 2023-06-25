@@ -37,3 +37,6 @@ func get_scene(target_scene):
 			return arena_scene.instance()
 		Scenes.End:
 			return end_scene.instance()
+
+func get_blood_splatter_container():
+	return $BloodSplatters
