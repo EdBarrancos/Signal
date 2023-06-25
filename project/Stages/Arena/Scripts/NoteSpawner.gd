@@ -11,6 +11,7 @@ export(NodePath) var center_arena_path;
 onready var center_arena = get_node(center_arena_path);
 export(int) var width;
 export(int) var height;
+export(int) var offset;
 
 onready var rng = RandomNumberGenerator.new()
 
@@ -26,13 +27,13 @@ func spawn_note(note_position):
 func spawn_note_in_random_position():
 	var new_note = note.instance()
 	notes_container.call_deferred("add_child", new_note)
-	new_note.position = random_position(5)
+	new_note.position = random_position(offset)
 	return new_note
 
 func spawn_patch():
 	var new_path = patch.instance()
 	grass_container.add_child(new_path)
-	new_path.position = random_position(new_path.radius)
+	new_path.position = random_position(new_path.radius + offset)
 	return new_path
 	
 func clean_notes():

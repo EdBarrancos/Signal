@@ -409,6 +409,7 @@ patch = ExtResource( 12 )
 center_arena_path = NodePath("../Center")
 width = 162
 height = 146
+offset = 40
 
 [node name="Center" type="Position2D" parent="."]
 position = Vector2( 80, 72 )
