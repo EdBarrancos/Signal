@@ -12,25 +12,34 @@ onready var kill_tipe = $KillTip
 onready var capture_tip = $CaptureTip
 
 func _ready():
-	pin_tutorial.clear()
-	pin_tutorial.append_bbcode(
-		"[center]" +
-		"[" + KeyBindings.get_key_binding_pin() + "] " + 
-		pin_tutorial_label +
-		"[/center]")
-	
-	boost_tutorial.clear()
-	boost_tutorial.append_bbcode(
-		"[center]" +
-		"[" + KeyBindings.get_key_binding_boost() + "] " +
-		boost_tutorial_label +
-		"[/center]")
+	set_and_update_tutorials()
+	KeyBindings.connect("input_changed", self, "set_and_update_tutorials")
 
 func init(_parent):
 	pass
 
 func _process(_delta):
    pass
+
+func set_and_update_tutorials():
+	set_pin_tutorial()
+	set_boost_tutorial()
+
+func set_pin_tutorial():
+	pin_tutorial.clear()
+	pin_tutorial.append_bbcode(
+		"[center]" +
+		"[" + KeyBindings.get_key_binding_pin() + "] " + 
+		pin_tutorial_label +
+		"[/center]")
+
+func set_boost_tutorial():
+	boost_tutorial.clear()
+	boost_tutorial.append_bbcode(
+		"[center]" +
+		"[" + KeyBindings.get_key_binding_boost() + "] " +
+		boost_tutorial_label +
+		"[/center]")
 
 func start():
 	set_left(true)
