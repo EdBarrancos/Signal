@@ -123,7 +123,13 @@ GO_TO_ENDSCREEN={
 2d_render/layer_4="Catch"
 2d_render/layer_6="Pin"
 2d_render/layer_9="Patch of Plants"
+2d_physics/layer_1="Walls"
+2d_physics/layer_2="Player Always"
+2d_physics/layer_3="Fence Area"
 2d_physics/layer_4="Catch"
+2d_physics/layer_5="Player not boost"
+2d_physics/layer_6="Pin"
+2d_physics/layer_9="Patch of Plants"
 
 [physics]
 

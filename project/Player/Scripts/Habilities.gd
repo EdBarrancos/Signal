@@ -34,7 +34,6 @@ func activate_boost():
 		boost_particles.restart()
 		get_parent().set_collision_layer_bit(4, false) # Dodege Catches
 		get_parent().set_collision_mask_bit(5, false) # Dodge pins
-		get_parent().set_collision_layer_bit(1, false) # Not activate pin animation
 
 ##############
 #MISCELANIOUS#
@@ -45,4 +44,3 @@ func _on_BoostTimer_timeout():
 	movement_handler.stop_boost(boost_speed)
 	get_parent().set_collision_layer_bit(4, true)
 	get_parent().set_collision_mask_bit(5, true)
-	get_parent().set_collision_layer_bit(1, true)
