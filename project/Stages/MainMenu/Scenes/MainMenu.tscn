@@ -199,4 +199,5 @@ position = Vector2( 25, 19 )
 [node name="PlayBox" parent="." instance=ExtResource( 2 )]
 position = Vector2( 80, 72 )
 max_wave_size = 20.0
-animation_time = 0.7
+wave_animation_time = 0.7
+flash_animation_time = 0.2

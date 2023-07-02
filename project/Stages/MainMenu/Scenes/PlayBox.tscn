@@ -1,13 +1,38 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Plants/Scripts/Shaders/TopdownWindyPlants.gdshader" type="Shader" id=1]
 [ext_resource path="res://Stages/MainMenu/Scripts/PlayBox.gd" type="Script" id=2]
 [ext_resource path="res://assets/visual/PlayBox.png" type="Texture" id=3]
 
+[sub_resource type="Shader" id=21]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform vec2 wind = vec2(0, 0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+uniform float flash_modifier: hint_range(0.0, 1.0);
+uniform vec4 flash_color : hint_color;
+
+void vertex() {
+	vec4 pos = WORLD_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+	VERTEX.x += wind.x * max(0.0, (1.0-UV.y) - heightOffset);
+	VERTEX.y += wind.y * max(0.0, (1.0-UV.y) - heightOffset);
+}
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	vec4 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV);
+	color.rgb = mix(color.rgb,flash_color.rgb,flash_modifier);
+	COLOR = color;
+}"
+
 [sub_resource type="ShaderMaterial" id=19]
-shader = ExtResource( 1 )
+shader = SubResource( 21 )
 shader_param/wind = Vector2( 0, 0 )
 shader_param/heightOffset = 0.2
+shader_param/flash_modifier = 0.0
+shader_param/flash_color = Color( 0.996078, 0.423529, 0.564706, 1 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 3 )

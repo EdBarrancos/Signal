@@ -33,6 +33,7 @@ wait_time = 0.6
 autostart = true
 
 [node name="FenceVisual" type="Polygon2D" parent="."]
+visible = false
 material = SubResource( 2 )
 
 [connection signal="child_entered_tree" from="." to="." method="_on_Fence_child_entered_tree"]
