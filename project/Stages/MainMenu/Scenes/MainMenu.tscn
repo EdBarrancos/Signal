@@ -193,11 +193,13 @@ position = Vector2( 80, 72 )
 current = true
 zoom = Vector2( 1.1, 1.1 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 25, 19 )
 
-[node name="PlayBox" parent="." instance=ExtResource( 2 )]
-position = Vector2( 80, 72 )
+[node name="PlayBox" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 80, 74 )
 max_wave_size = 20.0
 wave_animation_time = 0.7
 flash_animation_time = 0.2

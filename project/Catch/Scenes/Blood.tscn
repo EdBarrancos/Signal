@@ -8,13 +8,13 @@ _data = [ Vector2( 0.00251889, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.987406, 0.348558 
 
 [node name="Blood" type="CPUParticles2D"]
 z_index = -1
-amount = 13
-speed_scale = 1.5
+amount = 18
+speed_scale = 2.0
 explosiveness = 1.0
 texture = ExtResource( 1 )
 spread = 180.0
 gravity = Vector2( 0, 0 )
-initial_velocity = 5.0
+initial_velocity = 7.0
 initial_velocity_random = 0.8
 linear_accel = -1.0
 scale_amount_random = 0.5
@@ -23,7 +23,7 @@ color = Color( 1, 1, 1, 0.670588 )
 script = ExtResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.45
 one_shot = true
 autostart = true
 
