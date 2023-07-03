@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Stages/MainMenu/Scripts/PlayBox.gd" type="Script" id=2]
 [ext_resource path="res://assets/visual/PlayBox.png" type="Texture" id=3]
@@ -40,6 +40,9 @@ extents = Vector2( 7, 3 )
 [sub_resource type="RectangleShape2D" id=20]
 extents = Vector2( 8, 4 )
 
+[sub_resource type="RectangleShape2D" id=22]
+extents = Vector2( 8, 4 )
+
 [node name="PlayBox" type="StaticBody2D"]
 collision_mask = 2
 script = ExtResource( 2 )
@@ -66,4 +69,12 @@ shape = SubResource( 20 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="FencingCollisions" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FencingCollisions"]
+shape = SubResource( 22 )
+
 [connection signal="body_entered" from="PlayerCollision" to="." method="_on_PlayerCollision_body_entered"]
+[connection signal="area_exited" from="FencingCollisions" to="." method="_on_FencingCollisions_area_exited"]

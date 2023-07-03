@@ -11,6 +11,8 @@ onready var animation_player = $AnimationPlayer
 
 var blood = load("res://Catch/Scenes/Blood.tscn")
 
+export var separation_from_other_catch : float
+
 ###########
 #VARIABLES#
 ###########

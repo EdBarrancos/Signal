@@ -54,8 +54,9 @@ rotating = true
 zoom = Vector2( 1.1, 1.1 )
 script = ExtResource( 2 )
 maxOffSet = 100
-maxAngle = 40
+maxAngle = 30
 powerTraumaTo = 2
+decreaseTrauma = 0.03
 
 [node name="NormalGameState" type="Node" parent="GameStates"]
 script = ExtResource( 10 )
@@ -69,8 +70,9 @@ current = true
 zoom = Vector2( 1.3, 1.3 )
 script = ExtResource( 2 )
 maxOffSet = 100
-maxAngle = 40
+maxAngle = 30
 powerTraumaTo = 2
+decreaseTrauma = 0.03
 
 [node name="CameraTransiction" parent="GameStates/NormalGameState" instance=ExtResource( 11 )]
 default_current_camera = NodePath("../../InitialGameState/Camera")

@@ -24,7 +24,7 @@ shader_param/green_displacement = Vector2( 0, 0 )
 shader_param/blue_displacement = Vector2( 0.0013, 0.008 )
 
 [node name="Fence" type="Area2D"]
-collision_layer = 0
+collision_layer = 64
 collision_mask = 8
 script = ExtResource( 1 )
 

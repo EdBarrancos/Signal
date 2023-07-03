@@ -56,7 +56,8 @@ func _on_Player_spawn_pin():
 
 func _on_Player_new_fence(fence):
 	active_fences.append(fence)
-
+	game_states.get_camera().increase_trauma(
+		game_states.get_camera().TraumaIntensity.Medium)
 
 func _on_GameStates_all_states_finished():
 	get_parent().set_ending_scene(score_manager.score_points)

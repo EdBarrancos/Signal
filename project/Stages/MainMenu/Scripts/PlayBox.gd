@@ -54,3 +54,7 @@ func _on_PlayerCollision_body_entered(body):
 		Tween.EASE_IN_OUT, 
 		flash_animation_time / 2)
 	tween.start()
+
+
+func _on_FencingCollisions_area_exited(area):
+	print("hello")
