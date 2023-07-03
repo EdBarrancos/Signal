@@ -8,6 +8,7 @@ onready var pin_scene = load("res://Player/Scenes/Pin.tscn")
 
 onready var animation_player = $AnimationPlayer
 onready var fence = $VisualFence
+onready var auxiliary_fence = $AuxiliaryFence
 onready var fence_collision = $VisualFence/FenceArea/FenceCollision
 onready var fence_area = $VisualFence/FenceArea
 onready var spawn_sound = $SpawnSound
@@ -36,6 +37,12 @@ onready var is_temp = false
 func _ready():
 	spawn_sound.play_sound()
 	sparks_particles.emitting = true
+	
+func _process(_delta):
+	if (next == null):
+		auxiliary_fence.clear_points()
+		auxiliary_fence.add_point(Vector2.ZERO)
+		auxiliary_fence.add_point(parent.global_position - self.global_position)
 
 func init(parent_tobe, pos):
 	self.global_position = pos
@@ -43,6 +50,7 @@ func init(parent_tobe, pos):
 
 func set_next(next_pin):
 	next = next_pin
+	auxiliary_fence.clear_points()
 	
 func set_previous(previous_pin):
 	previous = previous_pin
