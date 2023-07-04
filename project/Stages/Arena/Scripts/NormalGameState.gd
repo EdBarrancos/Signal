@@ -3,8 +3,6 @@ extends GameState
 onready var camera_transition = $CameraTransiction
 onready var spawner = $"../../Spawner"
 
-onready var temp_position = $Position2D
-
 onready var score_lives_label = $CanvasLayer
 
 onready var spawn_interval_timer = $SpawnInterval
