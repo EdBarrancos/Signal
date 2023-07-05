@@ -11,8 +11,6 @@ onready var animation_player = $AnimationPlayer
 
 var blood = load("res://Catch/Scenes/Blood.tscn")
 
-export var separation_from_other_catch : float
-
 ###########
 #VARIABLES#
 ###########
@@ -25,7 +23,7 @@ onready var sound_finished = false
 onready var caught = false
 onready var dead = false
 
-signal died
+signal died(note)
 signal caught
 
 ########
@@ -69,7 +67,7 @@ func play_sound_dead():
 	
 func die():
 	if caught == false and dead == false:
-		emit_signal("died")
+		emit_signal("died", self)
 		dead = true
 		animation_player.play("Dead")
 		play_sound_dead()

@@ -27,10 +27,10 @@ func start():
 	new_tutorial.show()
 
 func stop():
-	set_process(false)
 	state_camera.hide()
 	tilemap.hide()
 	new_tutorial.hide()
+	set_process(false)
 
 func spawn_note():
 	var note = note_spawner.spawn_note(enemy_position.position)
@@ -38,7 +38,7 @@ func spawn_note():
 	note.connect("tree_exited", self, "on_note_killed")
 	note.connect("caught", self, "on_note_caught")
 
-func on_note_died():
+func on_note_died(_destroyed_note):
 	murderer = true
 
 func on_note_killed():
@@ -50,7 +50,7 @@ func on_note_caught():
 	manager.finish_state(state_index)
 	
 func finish():
-	set_process(false)
 	tilemap.hide()
 	new_tutorial.hide()
+	set_process(false)
 

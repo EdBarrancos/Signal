@@ -46,6 +46,7 @@ position = Vector2( 30, 51 )
 
 [node name="GameStates" type="Node" parent="."]
 script = ExtResource( 5 )
+starting_state_index = 1
 states_paths = [ NodePath("InitialGameState"), NodePath("NormalGameState") ]
 
 [node name="InitialGameState" type="Node" parent="GameStates"]
@@ -70,6 +71,7 @@ decreaseTrauma = 0.03
 
 [node name="TileMap" type="TileMap" parent="GameStates/InitialGameState"]
 position = Vector2( 8, 0 )
+z_index = -1
 tile_set = ExtResource( 13 )
 cell_size = Vector2( 16, 16 )
 collision_layer = 0
@@ -116,6 +118,9 @@ awsd_keyboard_texture = ExtResource( 24 )
 script = ExtResource( 10 )
 state_index = 1
 camera_path = NodePath("Camera")
+max_number_of_notes = 13
+end_animation_time = 0.5
+end_animation_slowdown = 0.2
 
 [node name="Camera" type="Camera2D" parent="GameStates/NormalGameState"]
 position = Vector2( 80, 72 )
@@ -165,6 +170,20 @@ text = "Lives: 10"
 
 [node name="SpawnInterval" type="Timer" parent="GameStates/NormalGameState"]
 
+[node name="EndAnimation" type="Timer" parent="GameStates/NormalGameState"]
+one_shot = true
+
+[node name="LoseCamera" type="Camera2D" parent="GameStates/NormalGameState"]
+position = Vector2( 80, 72 )
+rotating = true
+zoom = Vector2( 0.4, 0.4 )
+
+[node name="CameraTransictionLose" parent="GameStates/NormalGameState" instance=ExtResource( 11 )]
+default_current_camera = NodePath("../Camera")
+default_target_camera = NodePath("../LoseCamera")
+default_ease_out = 1
+default_transition_type = 7
+
 [node name="Spawner" type="Node2D" parent="."]
 script = ExtResource( 7 )
 __meta__ = {
@@ -189,3 +208,4 @@ __meta__ = {
 [connection signal="all_states_finished" from="GameStates" to="." method="_on_GameStates_all_states_finished"]
 [connection signal="finished" from="GameStates/NormalGameState/CameraTransiction" to="GameStates/NormalGameState" method="_on_CameraTransiction_finished"]
 [connection signal="timeout" from="GameStates/NormalGameState/SpawnInterval" to="GameStates/NormalGameState" method="_on_SpawnInterval_timeout"]
+[connection signal="timeout" from="GameStates/NormalGameState/EndAnimation" to="GameStates/NormalGameState" method="_on_EndAnimation_timeout"]

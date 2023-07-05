@@ -13,6 +13,12 @@ export(float) var spawning_interval = 5.0;
 export(float) var interval_increase = 0.8;
 var current_notes
 
+export(float) var end_animation_time = 1.0;
+export(float) var end_animation_slowdown = 0.8;
+onready var end_animation_timer = $EndAnimation
+onready var end_animation_camera = $LoseCamera
+onready var end_animation_camera_transition = $CameraTransictionLose
+
 func _ready():
 	pass
 
@@ -42,11 +48,15 @@ func on_note_caught():
 	on_note_destroyed()
 	score_lives_label.add_score(1)
 	
-func on_note_killed():
+func on_note_killed(destroyed_note):
 	on_note_destroyed()
 	score_lives_label.decrement_lives()
-	if score_lives_label.lives <= 0:
-		get_parent().finish_state(state_index)
+	if score_lives_label.lives == 0:
+		end_animation_timer.set_wait_time(end_animation_time)
+		end_animation_timer.start()
+		end_animation_camera.position = destroyed_note.position
+		end_animation_camera_transition.init_transition(0.06)
+		Engine.time_scale = end_animation_slowdown
 
 func _on_CameraTransiction_finished():
 	score_lives_label.show()
@@ -72,5 +82,7 @@ func _on_SpawnInterval_timeout():
 	spawning_interval += interval_increase
 	spawn_interval_timer.set_wait_time(spawning_interval)
 	spawn_interval_timer.start()
-	
-	
+
+func _on_EndAnimation_timeout():
+	Engine.time_scale = 1.0
+	get_parent().finish_state(state_index)
