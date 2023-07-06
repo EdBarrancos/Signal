@@ -318,6 +318,11 @@ bus = "SoundEffects"
 script = ExtResource( 4 )
 available_sounds = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ) ]
 
+[node name="Undead" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
 [connection signal="area_entered" from="Movement/ScanPatches" to="Movement" method="_on_ScanPatches_area_entered"]
 [connection signal="area_exited" from="Movement/ScanPatches" to="Movement" method="_on_ScanPatches_area_exited"]
 [connection signal="body_entered" from="Movement/ScanOtherSheep" to="Movement" method="_on_ScanOtherSheep_body_entered"]
@@ -328,3 +333,4 @@ available_sounds = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ) ]
 [connection signal="timeout" from="SoundTimer" to="." method="_on_SoundTimer_timeout"]
 [connection signal="finished" from="CaughtSound" to="." method="_on_CaughtSound_finished"]
 [connection signal="finished" from="DeadSound" to="." method="_on_DeadSound_finished"]
+[connection signal="timeout" from="Undead" to="." method="_on_Undead_timeout"]

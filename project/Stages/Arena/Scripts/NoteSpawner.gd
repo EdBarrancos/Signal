@@ -44,7 +44,7 @@ func clean_patch():
 	for child in grass_container.get_children():
 		child.queue_free()
 	
-func random_position(offset):
-	var x = rng.randi_range(-width/2 + offset/2, width/2 - offset/2)
-	var y = rng.randi_range(-height/2 + offset/2, height/2 - offset/2)
+func random_position(offset_value):
+	var x = rng.randi_range(-width/2 + offset_value/2, width/2 - offset_value/2)
+	var y = rng.randi_range(-height/2 + offset_value/2, height/2 - offset_value/2)
 	return Vector2(x, y) + center_arena.global_position

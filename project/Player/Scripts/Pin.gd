@@ -187,7 +187,7 @@ func _on_FenceCollision_area_entered(area):
 	elif area.has_method("get_pin"):
 		colliding_with.append(area.get_pin())
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	if is_closed:
 		finish_close()
 		

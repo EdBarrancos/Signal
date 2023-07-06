@@ -10,10 +10,10 @@ onready var sprite = self
 func _ready():
 	KeyBindings.connect("input_changed", self, "input_changed")
 
-func init(parent):
+func init(_parent):
 	pass
 
-func _process(delta):
+func _process(_delta):
 	if (Input.is_action_pressed(input_expected)):
 		self.frame = 1
 	else:

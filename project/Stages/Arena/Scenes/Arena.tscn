@@ -46,7 +46,6 @@ position = Vector2( 30, 51 )
 
 [node name="GameStates" type="Node" parent="."]
 script = ExtResource( 5 )
-starting_state_index = 1
 states_paths = [ NodePath("InitialGameState"), NodePath("NormalGameState") ]
 
 [node name="InitialGameState" type="Node" parent="GameStates"]

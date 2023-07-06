@@ -26,7 +26,7 @@ func set_keyboard_with_event(event):
 			is_arrows_right = false
 	set_keyboard()
 		
-func _on_joy_connection_changed(device_id, connected):
+func _on_joy_connection_changed(_device_id, connected):
 	if connected:
 		set_controller()
 	else:

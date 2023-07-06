@@ -22,6 +22,7 @@ onready var sound_finished = false
 
 onready var caught = false
 onready var dead = false
+onready var invincible = true
 
 signal died(note)
 signal caught
@@ -66,6 +67,8 @@ func play_sound_dead():
 	die_sound_effect.play_sound()
 	
 func die():
+	if invincible:
+		return
 	if caught == false and dead == false:
 		emit_signal("died", self)
 		dead = true
@@ -100,3 +103,7 @@ func _on_HurtBox_body_entered(_body):
 
 func _on_DeadSound_finished():
 	sound_finished = true
+
+
+func _on_Undead_timeout():
+	invincible = false

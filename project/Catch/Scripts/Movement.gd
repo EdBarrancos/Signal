@@ -21,7 +21,7 @@ func _ready():
 func init(_parent):
 	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var target_vector = Vector2.ZERO
 	if (current_target):
 		target_vector += (current_target - global_position)
